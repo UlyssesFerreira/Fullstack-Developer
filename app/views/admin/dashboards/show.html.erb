@@ -3,34 +3,9 @@
   <div class="container mt-5">
     <h1 class="text-primary">Admin Dashboard</h1>
 
-    <div class="row mt-4">
-
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem; background-color: #84d99b;">
-          <div class="card-body" >
-            <p class="card-text"><%= @users_count %></p>
-            <h5 class="card-title">Total Users</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem; background-color: #84d99b;">
-          <div class="card-body" >
-            <p class="card-text"><%= @users_count_by_role["admin"] %></p>
-            <h5 class="card-title">Admin Users</h5>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem; background-color: #84d99b;">
-          <div class="card-body" >
-            <p class="card-text"><%= @users_count_by_role["no_admin"] %></p>
-            <h5 class="card-title">Normal Users</h5>
-          </div>
-        </div>
-      </div>
+    <%= turbo_stream_from "users" %>
+    <div id="user_counters">
+      <%= render "counters" %>
     </div>
 
     <table class="table mt-5">

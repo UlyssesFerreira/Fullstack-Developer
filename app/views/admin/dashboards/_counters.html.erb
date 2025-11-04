@@ -1,0 +1,28 @@
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem; background-color: #84d99b;">
+      <div class="card-body" >
+        <p class="card-text"><%= User.count %></p>
+        <h5 class="card-title">Total Users</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem; background-color: #84d99b;">
+      <div class="card-body" >
+        <p class="card-text"><%= User.admin.count %></p>
+        <h5 class="card-title">Admin Users</h5>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem; background-color: #84d99b;">
+      <div class="card-body" >
+        <p class="card-text"><%= User.no_admin.count %></p>
+        <h5 class="card-title">Normal Users</h5>
+      </div>
+    </div>
+  </div>
+</div>
