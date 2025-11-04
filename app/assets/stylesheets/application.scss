@@ -33,3 +33,16 @@
   color: white;
   font-size: xx-large;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

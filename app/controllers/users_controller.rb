@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      @user.attach_avatar_from_url if @user.avatar_url.present?
       redirect_to profile_user_path
     else
       render :edit, status: :unprocessable_entity
@@ -25,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :full_name)
+    params.require(:user).permit(:email, :full_name, :avatar_image, :avatar_url)
   end
 end

@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      @user.attach_avatar_from_url if @user.avatar_url.present?
       redirect_to admin_user_path(@user)
     else
       render :edit, status: :unprocessable_entity
@@ -39,7 +40,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    user_p = params.require(:user).permit(:email, :full_name, :password, :role)
+    user_p = params.require(:user).permit(:email, :full_name, :password, :role, :avatar_image, :avatar_url)
     user_p[:role] = User.roles.key(user_p[:role].to_i) if user_p[:role].present?
     user_p
   end

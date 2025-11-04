@@ -18,7 +18,14 @@
       <%= f.label :password %>
     </div>
 
-    <%= f.submit "Sign Up", class: "btn btn-primary w-100 py-2" %>
+    <div class="mb-3">
+      <%= f.label :avatar_image, "Upload your avatar image from file:", class: "formFileSm" %>
+      <%= f.file_field :avatar_image, accept: "image/png,image/jpg,image/jpeg", class: "form-control form-control-sm" %>
+    </div>
+    <%= f.label :avatar_url, "Or provide an image URL:" %>
+    <%= f.text_field :avatar_url, placeholder: "https://example.com/avatar.jpg", class: "form-control form-control-sm" %>
+
+    <%= f.submit "Sign Up", class: "btn btn-primary w-100 py-2 mt-5" %>
   <% end %>
 
   <%= render "devise/shared/links" %>
