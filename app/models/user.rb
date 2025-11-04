@@ -9,4 +9,13 @@ class User < ApplicationRecord
     "no_admin" => 0,
     "admin" => 1
   }
+
+  after_create_commit -> { broadcast_counters }
+  after_destroy_commit -> { broadcast_counters }
+
+  private
+
+  def broadcast_counters
+    broadcast_update_to "users", target: "user_counters", html: ApplicationController.render(partial: "admin/dashboards/counters")
+  end
 end
