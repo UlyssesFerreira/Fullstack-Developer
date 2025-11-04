@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resource :dashboard, only: [ :show ]
+    resources :users, only: [ :new, :create, :edit, :update, :destroy ]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
