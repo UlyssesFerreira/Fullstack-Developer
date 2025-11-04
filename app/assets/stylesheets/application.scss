@@ -1,0 +1,35 @@
+@import "bootstrap";
+
+.user-form {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.user-form .form-floating:focus-within {
+  z-index: 2;
+}
+
+.user-form .top-field {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.user-form .middle-field {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.user-form .bottom-field {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.card {
+  color: white;
+  font-size: xx-large;
+}

@@ -1,34 +1,25 @@
-<h2>Sign up</h2>
+<div class="user-form w-100 m-auto">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+    <div class="form-floating">
+      <%= f.text_field :full_name, autofocus: true, placeholder: "Full name", class: "form-control top-field" %>
+      <%= f.label :full_name %>
+    </div>
 
-  <div class="field">
-    <p><%= f.label :full_name %></p>
-    <p><%= f.text_field :full_name, autofocus: true %></p>
-  </div>
+    <div class="form-floating">
+      <%= f.email_field :email, placeholder: "name@example.com", autocomplete: "email", class: "form-control middle-field" %>
+      <%= f.label :email %>
+    </div>
 
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autocomplete: "email" %></p>
-  </div>
+    <div class="form-floating">
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: "form-control bottom-field" %>
+      <%= f.label :password %>
+    </div>
 
-  <div class="field">
-    <p><%= f.label :password %></p>
-    <% if @minimum_password_length %>
-      <p><em>(<%= @minimum_password_length %> characters minimum)</em></p>
-    <% end %>
-    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
-  </div>
+    <%= f.submit "Sign Up", class: "btn btn-primary w-100 py-2" %>
+  <% end %>
 
-  <div class="field">
-    <p><%= f.label :password_confirmation %></p>
-    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
