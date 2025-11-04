@@ -1,0 +1,20 @@
+<div class="user-form w-100 m-auto mt-5">
+  <%= form_with model: current_user, url: user_path, method: :patch do |f| %>
+
+    <h1 class="h3 mb-3 fw-normal">Profile</h1>
+    <div class="form-floating">
+      <%= f.text_field :full_name, value: current_user.full_name, autofocus: true, placeholder: "Full name", class: "form-control top-field" %>
+      <%= f.label :full_name %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= f.email_field :email, value: current_user.email, placeholder: "name@example.com", autocomplete: "email", class: "form-control bottom-field" %>
+      <%= f.label :email %>
+    </div>
+
+    <%= f.submit "Update", class: "btn btn-primary w-100 py-2" %>
+  <% end %>
+
+  <%= button_to "Delete profile", user_path, method: :delete, class: "btn btn-danger w-100 mt-2" %>
+
+</div>
