@@ -1,0 +1,29 @@
+<div class="d-flex" style="min-height: 100vh;">
+  <%= render "shared/sidebar" %>
+
+  <div class="user-form w-100 m-auto mt-5">
+    <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+
+      <h1 class="h3 mb-3 fw-normal">Profile</h1>
+      <div class="form-floating">
+        <%= f.text_field :full_name, value: @user.full_name, autofocus: true, placeholder: "Full name", class: "form-control top-field" %>
+        <%= f.label :full_name %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= f.email_field :email, value: @user.email, placeholder: "name@example.com", autocomplete: "email", class: "form-control bottom-field" %>
+        <%= f.label :email %>
+      </div>
+
+      <div class="form-check form-switch">
+        <%= f.checkbox :role, checked: @user.admin?, class: "form-check-input" %>
+        <%= f.label :role, "User Admin", class: "form-check-label" %>
+      </div>
+
+      <%= f.submit "Update", class: "btn btn-primary w-100 py-2 mt-2" %>
+    <% end %>
+
+    <%= button_to "Delete profile", admin_user_path, method: :delete, class: "btn btn-danger w-100 mt-2" %>
+
+  </div>
+</div>
