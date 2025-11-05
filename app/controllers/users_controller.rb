@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       @user.attach_avatar_from_url if @user.avatar_url.present?
+      flash[:notice] = "Account updated successfully"
       redirect_to profile_user_path
     else
       render :edit, status: :unprocessable_entity
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     if @user.destroy
+      flash[:notice] = "Account successfully deleted"
       redirect_to new_user_session_path
     else
       render :edit, status: :unprocessable_entity
