@@ -7,6 +7,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:notice] = "Account created successfully"
       redirect_to admin_dashboard_path
     else
       render :new, status: :unprocessable_entity
@@ -19,6 +20,7 @@ class Admin::UsersController < ApplicationController
   def update
     if @user.update(user_params)
       @user.attach_avatar_from_url if @user.avatar_url.present?
+      flash[:notice] = "Account updated successfully"
       redirect_to admin_user_path(@user)
     else
       render :edit, status: :unprocessable_entity
@@ -27,7 +29,8 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to new_user_session_path
+      flash[:notice] = "Account successfully deleted"
+      redirect_to admin_dashboard_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,6 +40,9 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "User not found"
+    redirect_to root_path
   end
 
   def user_params
