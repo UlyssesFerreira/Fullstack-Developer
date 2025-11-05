@@ -1,0 +1,23 @@
+<div class="user-form w-100 m-auto">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+    <div class="form-floating">
+      <%= f.email_field :email, placeholder: "name@example.com", autocomplete: "email", class: "form-control top-field" %>
+      <%= f.label :email %>
+    </div>
+
+    <div class="form-floating">
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "current-password", class: "form-control bottom-field" %>
+      <%= f.label :password %>
+    </div>
+
+    <%= f.submit "Login", class: "btn btn-primary w-100 py-2 mt-2" %>
+  <% end %>
+
+  <div>
+    <a href="<%= new_user_registration_path %>">Sign up</a>
+  </div>
+</div>
