@@ -1,38 +1,38 @@
-<div class="d-flex" style="min-height: 100vh;">
-  <div class="container mt-5">
-    <h1 class="text-primary text-dark">Admin Dashboard</h1>
+<div class="container">
+  <h1 class="h3 mt-5 mb-4">Admin Dashboard</h1>
+</div>
+<div class="container mb-5">
+  <%= render "counters" %>
 
-    <%= turbo_stream_from "users" %>
-    <div id="user_counters">
-      <%= render "counters" %>
+  <div class="card">
+    <div class="card-header py-3 bg-white">
+      <h5 class="mb-0">Lista de Usuários</h5>
     </div>
-
-    <table class="table mt-5">
-      <thead>
-        <tr>
-          <th scope="col">Full name</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Role</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
-            <td><span class="badge text-bg-secondary"><%= user.role.humanize %></span></td>
-            <td>
-            <a class="icon-link icon-link-hover text-decoration-none" href="<%= edit_admin_user_path(user) %>">
-              Show user
-              <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </a>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Full name</th>
+              <th>E-mail</th>
+              <th>Role</th>
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td class="fw-semibold"><%= user.full_name %></td>
+                <td><%= user.email %></td>
+                <td><span class="badge bg-secondary"><%= user.role.humanize %></span></td>
+                <td class="text-end">
+                  <a href="<%= edit_admin_user_path(user) %>" class="btn btn-outline-dark btn-sm">Show user</a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
